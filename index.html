@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="script.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body onload="load()">
+
+
+  <div class="container">
+
+    <h2>Energy Olympics!</h2>
+    <p>Imagine you are a lightbulb. How much power do you think it'll take you to supply light for a week without stopping? First off, what even <i>is</i> power? </p>
+    <p>In physics, power is the amount of work you do over a certain amount of time. It is typically measured in Watts, which is also used to measure the power usage of a lightbulb.</p>
+    <p>The amount of power you'll need depends on the type of lightbulb ou are. You may have heard of terms like "LED" or "60-Watt Incandescent," but do you know what they mean? In this game we're going to find out!</p>
+    
+
+  </div>
+
+<div class="container">
+
+  <h2>Step 1: Collecting data</h2>
+  <p>First, you're going to do some exercise. Grab a stopwatch - we're going to record some values to figure out how much exercise you would have to do if you were a lightbulb!</p>
+
+  <div class="card border-info">
+  <div class="card-body">
+    <h5 class="card-title">Sprinting</h5>
+    <p class="card-text">It's a little hard to find space to sprint in the house - that's okay! All we need for this measurement is your weight in pounds.</p>
+    <form>
+        <input id="weight" type="number" placeholder="weight (lbs)">
+    </form>
+  </div>
+</div>
+
+<div class="card border-info">
+  <div class="card-body">
+    <h5 class="card-title">Stair Climbing</h5>
+    <p class="card-text">Count the number of stairs in your staircase. Then time yourself running up the stairs as quickly — and as safely! — as you can. Record those values here.</p>
+    <form>
+    <input id="stairs" type="number" placeholder="stairs climbed">
+    <input id="stairtime" type="number" placeholder="time (sec)">
+  </form>
+  </div>
+</div>
+
+<div class="card border-info">
+  <div class="card-body">
+    <h5 class="card-title">Hurdle Jumping</h5>
+    <p class="card-text">Pick a number between 10 and 25 and time yourself jumping that amount of times. Record how many jumps you did and how long it took you here.</p>
+    <form>
+    <input id="jumps" type="number" placeholder="jumps">
+    <input id="jumptime" type="number" placeholder="time (sec)">
+  </form>
+  </div>
+</div>
+
+  <button type="button" class="btn btn-primary" onclick="calculate()">Submit</button><br><br>
+
+  <div id="alert"></div>
+
+</div>
+
+<div id="calculation" class="container"></div><br><br>
+
+<a id="2"></a>
+<div id="step2">
+
+    <div class="container">
+
+      <h2>Step 2: Select a Lightbulb</h2>
+
+      <p>Are you tired? Well, we're about to find out how tired a lightbulb is going to be.</p>
+
+      <p>First, choose a type of lightbulb to step into the shoes of. You might not know what these types mean yet, but that's what you're going to find out.</p>
+
+      <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Select a Lightbulb
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" onclick="selectbulb(60)">60W Incandescent</a>
+        <a class="dropdown-item" onclick="selectbulb(15)">15W CFL</a>
+        <a class="dropdown-item" onclick="selectbulb(8)">8W LED</a>
+      </div>
+    </div>
+
+      <p id="wattreader">
+        <div id="available" class="reader">Watts Available: 0</div>
+        <div id="used" class="reader">Watts Used: 0</div>
+      </p>
+
+    </div>
+</div>
+
+<a id="3"></a>
+
+<div id="step3">
+
+    <div class="container">
+
+      <h2>Step 3: Design a Marathon</h2>
+
+      <p>Now, drag and drop icons representing each activity - stair climbing, sprinting, or hurdles - to design a marathon for your lightbulb. When the amount of power you've used in your marathon gets close to the amount of power the lightbulb needs, a submit button will appear. Click that when you're done.</p>
+
+      <div id="startBox" class = "div2" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <img src="https://lh3.googleusercontent.com/proxy/IqqvhhMzuLlRpG1Ft6JFcmCd79GvAN6GYutHqRoY-HL47TosBXx_cpvLviyuUG0vUFj7dG0Nm-FbeW87tzI9oYkn5cg12BxBCsxxhjs" draggable="true" ondragstart="drag(event)" id="stairs_icon" height="80">
+        <img src="https://rugby.atavus.com/wp-content/uploads/2015/10/Sprint.png" draggable="true" ondragstart="drag(event)" id="sprint_icon" height="80">
+        <img src="https://www.vippng.com/png/detail/419-4190477_this-png-file-is-about-clipart-hurdle-hurdle.png" draggable="true" ondragstart="drag(event)" id="hurdle_icon" height="80">
+      </div>
+
+      <div id="dragBox" class = "div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    </div>
+</div>
+
+<a id="4"></a>
+
+<div id="step4" class="container">
+    <button type="button" class="btn btn-primary" onclick="finish()">Finish!</button><br><br>
+</div>
+
+<div id="step5" class="container">
+  <h2>Step 4: Calculate Results</h2>
+  <p>If you were a <div id="type"></div>, you would have to...</p>
+    <div id="results"></div>
+    <p>In order to provide power for a full week. Phew! Aren't you glad you're not a lightbulb?</p>
+</div>
+
+</body>
+</html>

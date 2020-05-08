@@ -1,0 +1,84 @@
+html{
+  scroll-behavior: smooth;
+}
+
+.div2 {
+  float: left;
+  width: 100%;
+  min-height:100px;
+  margin: 0px;
+  padding: 10px;
+  border: 1px solid black;
+  display:block;
+  margin-bottom:2vw;
+}
+
+#dragBox{
+  margin-bottom:10vw;
+}
+
+form{
+  margin-bottom:2vw;
+}
+
+input{
+  border: 1px solid #17a2b8 !important;
+  width:120px;
+}
+
+body{
+  padding-top:10vw;
+  padding-bottom:20vw;
+}
+
+button{
+  background-color:white !important;
+  color:#17a2b8 !important;
+  border-color:#17a2b8 !important;
+}
+
+button:hover{
+  background-color:#17a2b8 !important;
+  color:white !important;
+  border-color:#17a2b8 !important;
+}
+
+img:hover{
+  filter: opacity(0.5);
+}
+
+.dropdown{
+  margin-bottom:5vw;
+}
+
+.reader{
+  display:inline;
+  margin-right:10vw;
+}
+
+img{
+  margin:20px;
+}
+
+#step2, #step3, #step4, #step5{
+  display:none;
+}
+
+.card{
+  max-width:500px;
+  margin-bottom:2vw;
+}
+
+.card-title{
+  color: #17a2b8 !important;
+}
+
+p{
+  font-size:15px;
+  max-width:calc(500px + 20vw);
+  margin-top:25px !important;
+}
+
+#type{
+  display:inline;
+}
