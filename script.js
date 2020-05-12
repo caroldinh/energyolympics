@@ -5,6 +5,8 @@ var weight, stairs, stairtime, jumps, jumptime;
 var numSprints = 0, numHurdles = 0, numStairs = 0;
 
 function load(){
+  document.getElementById("step1").style.display = "block";
+  $("html, body").animate({ scrollTop: 0 }, "fast");
 }
 
 function allowDrop(ev) {
@@ -54,9 +56,10 @@ function drop(ev) {
   wattreader.innerHTML = "Watts used: " + usedWatts;
   if(Math.abs(availableWatts - usedWatts) < 200){
     wattreader.style.color = "orange";
-  } if(usedWatts > availableWatts){
+  } if(usedWatts >= availableWatts){
     wattreader.style.color = "darkcyan"
      document.getElementById("step4").style.display = "block";
+     document.getElementById("step3").style.marginBottom = "0vw";
     window.location = "#4";
   }else{
     wattreader.style.color = "black";
@@ -93,6 +96,7 @@ function calculate(){
 
       document.getElementById("step2").style.display = "block";
       window.location = "#2";
+      document.getElementById("step1").style.marginBottom = "0vw";
 
   }
 
@@ -129,6 +133,7 @@ function selectbulb(wattage){
   availableWatts = wattage * 24 * 7;
   wattreader.innerHTML = "Watts available: " + availableWatts;
   document.getElementById("step3").style.display = "block";
+  document.getElementById("step2").style.marginBottom = "0vw";
   window.location = "#3";
 }
 
@@ -141,4 +146,12 @@ function finish(){
     "Climb your staircase " + numStairs + " times, <br>" +
     "AND jump " + (numHurdles * jumps) + " hurdles.";
   document.getElementById("step5").style.display = "block";
+  document.getElementById("step4").style.marginBottom = "0vw";
+  window.location = "#5";
+  document.getElementById("step5").style.marginBottom = "7vw";
+}
+
+function reload(){
+  location.reload();
+  load();
 }

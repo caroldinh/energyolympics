@@ -11,10 +11,17 @@
 </head>
 <body onload="load()">
 
-
+  <a id="1"></a>
+  <div id="step1">
   <div class="container">
 
     <h2>Energy Olympics!</h2>
+
+    <div class="col-xz-12 col-md-6 col-xs-12 image-container">
+      <img class="img-responsive" src="https://i.pinimg.com/originals/8a/9c/1c/8a9c1cd69c4a06418a658763e03118b1.jpg">
+    </div>
+
+    
     <p>Imagine you are a lightbulb. How much power do you think it'll take you to supply light for a week without stopping? First off, what even <i>is</i> power? </p>
     <p>In physics, power is the amount of work you do over a certain amount of time. It is typically measured in Watts, which is also used to measure the power usage of a lightbulb.</p>
     <p>The amount of power you'll need depends on the type of lightbulb ou are. You may have heard of terms like "LED" or "60-Watt Incandescent," but do you know what they mean? In this game we're going to find out!</p>
@@ -23,49 +30,67 @@
   </div>
 
 <div class="container">
-
   <h2>Step 1: Collecting data</h2>
   <p>First, you're going to do some exercise. Grab a stopwatch - we're going to record some values to figure out how much exercise you would have to do if you were a lightbulb!</p>
 
-  <div class="card border-info">
-  <div class="card-body">
-    <h5 class="card-title">Sprinting</h5>
-    <p class="card-text">It's a little hard to find space to sprint in the house - that's okay! All we need for this measurement is your weight in pounds.</p>
-    <form>
-        <input id="weight" type="number" placeholder="weight (lbs)">
-    </form>
+  <div class="row">
+    <div class="col">
+      <div class="card border-info">
+        <div class="card-body">
+          <h5 class="card-title">Sprinting</h5>
+          <p class="card-text">It's a little hard to find space to sprint in the house - that's okay! All we need for this measurement is your weight in pounds.</p>
+          <form>
+              <input id="weight" type="number" placeholder="weight (lbs)">
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col imgcol">
+      <img class="img-responsive" src="https://rugby.atavus.com/wp-content/uploads/2015/10/Sprint.png">
+    </div>
   </div>
-</div>
 
-<div class="card border-info">
-  <div class="card-body">
-    <h5 class="card-title">Stair Climbing</h5>
-    <p class="card-text">Count the number of stairs in your staircase. Then time yourself running up the stairs as quickly — and as safely! — as you can. Record those values here.</p>
-    <form>
-    <input id="stairs" type="number" placeholder="stairs climbed">
-    <input id="stairtime" type="number" placeholder="time (sec)">
-  </form>
+  <div class="row">
+    <div class="col imgcol">
+      <img class="img-responsive" src="https://cdn.clipart.email/676a819a0c096d2e16584ffface48678_running-up-stairs-clipart-clipartxtras_1600-1600.png">
+    </div>
+    <div class="col">
+      <div class="card border-info">
+        <div class="card-body">
+          <h5 class="card-title">Stair Climbing</h5>
+          <p class="card-text">Count the number of stairs in your staircase. Then time yourself running up the stairs as quickly — and as safely! — as you can. Record those values here.</p>
+          <form>
+          <input id="stairs" type="number" placeholder="stairs climbed">
+          <input id="stairtime" type="number" placeholder="time (sec)">
+        </form>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
 
-<div class="card border-info">
-  <div class="card-body">
-    <h5 class="card-title">Hurdle Jumping</h5>
-    <p class="card-text">Pick a number between 10 and 25 and time yourself jumping that amount of times. Record how many jumps you did and how long it took you here.</p>
-    <form>
-    <input id="jumps" type="number" placeholder="jumps">
-    <input id="jumptime" type="number" placeholder="time (sec)">
-  </form>
+  <div class="row">
+    <div class="col">
+      <div class="card border-info">
+        <div class="card-body">
+          <h5 class="card-title">Hurdle Jumping</h5>
+          <p class="card-text">Pick a number between 10 and 25 and time yourself jumping that amount of times. Record how many jumps you did and how long it took you here.</p>
+          <form>
+          <input id="jumps" type="number" placeholder="jumps">
+          <input id="jumptime" type="number" placeholder="time (sec)">
+        </form>
+        </div>
+      </div>
+    </div>
+    <div class="col imgcol">
+      <img class="img-responsive" src="https://www.vippng.com/png/detail/419-4190477_this-png-file-is-about-clipart-hurdle-hurdle.png">
+    </div>
   </div>
+
+  <div class="container"><button type="button" class="btn btn-primary" onclick="calculate()">Submit</button><br><br></div>
+
+  <div id="alert" class="container"></div>
+
 </div>
-
-  <button type="button" class="btn btn-primary" onclick="calculate()">Submit</button><br><br>
-
-  <div id="alert"></div>
-
-</div>
-
-<div id="calculation" class="container"></div><br><br>
 
 <a id="2"></a>
 <div id="step2">
@@ -73,6 +98,8 @@
     <div class="container">
 
       <h2>Step 2: Select a Lightbulb</h2>
+
+      <div id="calculation" class="container"></div><br><br>
 
       <p>Are you tired? Well, we're about to find out how tired a lightbulb is going to be.</p>
 
@@ -88,13 +115,6 @@
         <a class="dropdown-item" onclick="selectbulb(8)">8W LED</a>
       </div>
     </div>
-
-      <p id="wattreader">
-        <div id="available" class="reader">Watts Available: 0</div>
-        <div id="used" class="reader">Watts Used: 0</div>
-      </p>
-
-    </div>
 </div>
 
 <a id="3"></a>
@@ -107,14 +127,20 @@
 
       <p>Now, drag and drop icons representing each activity - stair climbing, sprinting, or hurdles - to design a marathon for your lightbulb. When the amount of power you've used in your marathon gets close to the amount of power the lightbulb needs, a submit button will appear. Click that when you're done.</p>
 
+      <p id="wattreader">
+        <div id="available" class="reader">Watts Available: 0</div>
+        <div id="used" class="reader">Watts Used: 0</div>
+      </p>
+
+    </div>
+
       <div id="startBox" class = "div2" ondrop="drop(event)" ondragover="allowDrop(event)">
-        <img src="https://lh3.googleusercontent.com/proxy/IqqvhhMzuLlRpG1Ft6JFcmCd79GvAN6GYutHqRoY-HL47TosBXx_cpvLviyuUG0vUFj7dG0Nm-FbeW87tzI9oYkn5cg12BxBCsxxhjs" draggable="true" ondragstart="drag(event)" id="stairs_icon" height="80">
-        <img src="https://rugby.atavus.com/wp-content/uploads/2015/10/Sprint.png" draggable="true" ondragstart="drag(event)" id="sprint_icon" height="80">
-        <img src="https://www.vippng.com/png/detail/419-4190477_this-png-file-is-about-clipart-hurdle-hurdle.png" draggable="true" ondragstart="drag(event)" id="hurdle_icon" height="80">
+        <img class="draggable" src="https://cdn.clipart.email/676a819a0c096d2e16584ffface48678_running-up-stairs-clipart-clipartxtras_1600-1600.png" draggable="true" ondragstart="drag(event)" id="stairs_icon" height="80">
+        <img class="draggable" src="https://rugby.atavus.com/wp-content/uploads/2015/10/Sprint.png" draggable="true" ondragstart="drag(event)" id="sprint_icon" height="80">
+        <img class="draggable" src="https://www.vippng.com/png/detail/419-4190477_this-png-file-is-about-clipart-hurdle-hurdle.png" draggable="true" ondragstart="drag(event)" id="hurdle_icon" height="80">
       </div>
 
       <div id="dragBox" class = "div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-    </div>
 </div>
 
 <a id="4"></a>
@@ -123,11 +149,78 @@
     <button type="button" class="btn btn-primary" onclick="finish()">Finish!</button><br><br>
 </div>
 
+
+<a id="5"></a>
+
 <div id="step5" class="container">
   <h2>Step 4: Calculate Results</h2>
   <p>If you were a <div id="type"></div>, you would have to...</p>
     <div id="results"></div>
     <p>In order to provide power for a full week. Phew! Aren't you glad you're not a lightbulb?</p>
+
+  <h2>What does this mean?</h2>
+  <p>Depending on the type of lightbulb you selected, you may have had to do more or less work. For the 8W LED,
+    you probably didn't have to drag too many activities into your marathon, but if you selected the 60W Incandescent,
+    you probably filled up a full page! This means that the higher wattage your lightbulbs have, the more power it takes
+    for them to light up your home - and the more tired they'll be at the end of it all.
+  </p>
+
+  <p>There are three main types of lightbulbs: LED, CFL, and incandescent.</p>
+
+  <div class="row">
+    <div class="col imgcol">
+      <img class="img-responsive" src="https://i5.walmartimages.com/asr/b2d0c04c-661b-444e-a20c-e97a5c14f5fc_1.eff249f3bdde1388e78badc50ee76bd9.jpeg">
+    </div>
+    <div class="col">
+      <h3>LED - Light Emitting Diode</h3>
+      <p>LED lightbulbs have the lowest wattage, typically using less than 12 Watts or 0.012 kilowatt hours (kWh), or the
+        fraction of 1,000 Watts used in one hour. These lightbulbs also have the longest lifespan and are the most efficient
+        energy users. If you're planning on buying a new lightbulb, these lightbulbs are the type you want to get to 
+        save energy - and money!
+      </p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col imgcol">
+      <img class="img-responsive" src="https://images.lampsplus.com/is/image/b9gt8/k7793?qlt=65&wid=710&hei=710&op_sharpen=1&fmt=jpeg">
+    </div>
+    <div class="col">
+      <h3>CFL - Compact Fluorescent Lightbulb</h3>
+      <p>CFL Lightbulbs, characterized by their spiral structure, have the second lowest wattage, using between 13 and 20 Watts 
+        or 0.013 and 0.02 kWh. These Lightbulbs can shine as brightly as an LED, but they aren't as efficient and use more 
+        energy to do so. They don't save as much power or money as an LED would, but they are much more effcient than the 
+        incandescent lightbulbs.
+      </p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col imgcol">
+      <img class="img-responsive" src="https://www.industrytap.com/wp-content/uploads/2016/02/incandescent-e1456179151174.jpg">
+    </div>
+    <div class="col">
+      <h3>Incandescent lightbulb</h3>
+      <p>Incandescent lightbulbs, as you can tell from the picture, are much older, and have a wattage of over 40 Watts or 0.04 kWh.
+        They are the least energy-efficient type of lightbulbs and only convert 5% of the energy they use into visible light. The
+        rest of the energy is converted into heat, meaning that these lightbulbs can become very, very hot. They also have the 
+        shortest lifespans out of any other lightbulb, meaning that you will have to replace them a lot more often!
+      </p>
+    </div>
+  </div>
+
+  <p>As you can tell, LED lightbulbs are the most efficient of the three types. The next time you're out to buy lightbulbs,
+    keep this in mind - you'll want to pick the lightbulb that requires the least power to light your home, so as not to
+    tire them out!
+  </p>
+
+  <p>If you want to see how much a difference wattage makes, feel free to play again, choosing a different lightbulb
+    as the type you selected before. You may be surprised!
+  </p>
+
+  <button type="button" class="btn btn-primary" onclick="reload()">Play Again</button><br><br>
+
+
 </div>
 
 </body>
