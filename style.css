@@ -40,6 +40,10 @@ button{
   margin-bottom:30vw;
 }
 
+a{
+  color:#17a2b8 !important;
+}
+
 button:hover{
   background-color:#17a2b8 !important;
   color:white !important;
